@@ -7,5 +7,6 @@ public class TipPanel : UIBase<TipPanel>
     public override void Init()
     {
         
+        
     }
 }
