@@ -743,6 +743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242284647}
   - component: {fileID: 242284648}
+  - component: {fileID: 242284649}
   m_Layer: 5
   m_Name: RegisterPanel
   m_TagString: Untagged
@@ -808,7 +809,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3003
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -820,6 +821,22 @@ MonoBehaviour:
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
   useSortingOrder: 0
+--- !u!114 &242284649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242284646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdec5607f090e5946bfae18297121c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userNameInput: {fileID: 13822421}
+  passwordInput: {fileID: 1539010573}
+  btnSure: {fileID: 738768073}
+  btnCancel: {fileID: 1260856504}
 --- !u!1 &246079389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &361502518
 Transform:
   m_ObjectHideFlags: 0
@@ -2830,7 +2847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1440857861
 Transform:
   m_ObjectHideFlags: 0
@@ -3201,7 +3218,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.314433
+  aspectRatio: 1.7706186
   mType: 1
   mFillDirection: 4
   mFillAmount: 1

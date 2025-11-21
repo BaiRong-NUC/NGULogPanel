@@ -15,21 +15,27 @@ public class LogPanel : UIBase<LogPanel>
         // 注册事件
         this.btnRegister.onClick.Add(new EventDelegate(() =>
         {
-            Debug.Log("注册按钮被点击");
+            RegisterPanel.instance.Show();
             this.Hide();
         }));
         this.btnLogin.onClick.Add(new EventDelegate(() =>
         {
-            // Debug.Log("登录按钮被点击");
-            // 判断用户名和密码是否为正确
-
-            // 记录数据
-            LogDataManager.instance.logData.userName = this.userNameInput.value;
-            LogDataManager.instance.logData.password = this.passwordInput.value;
-            LogDataManager.instance.logData.isRemember = this.rememberPasswordToggle.value;
-            LogDataManager.instance.logData.isAutoLogin = this.autoLoginToggle.value;
-            LogDataManager.instance.SaveLogData();
+            // 判断用户名和密码是否为正确]
+            if(!CheckLogin(this.userNameInput.value, this.passwordInput.value))
+            {
+                TipPanel.instance.Show();
+                TipPanel.instance.ChangeContent("用户名或密码错误");
+                return;
+            }
+            // 登录成功 记录数据用于测试
+            DataManager.instance.logData.userName = this.userNameInput.value;
+            DataManager.instance.logData.password = this.passwordInput.value;
+            DataManager.instance.logData.isRemember = this.rememberPasswordToggle.value;
+            DataManager.instance.logData.isAutoLogin = this.autoLoginToggle.value;
+            DataManager.instance.SaveLogData();
+            this.Hide();
         }));
+
         this.rememberPasswordToggle.onChange.Add(new EventDelegate(() =>
         {
             if (this.rememberPasswordToggle.value == false)
@@ -37,6 +43,7 @@ public class LogPanel : UIBase<LogPanel>
                 this.autoLoginToggle.value = false;
             }
         }));
+
         this.autoLoginToggle.onChange.Add(new EventDelegate(() =>
         {
             if(this.autoLoginToggle.value == true)
@@ -46,17 +53,44 @@ public class LogPanel : UIBase<LogPanel>
         }));
 
         // 初始化登录界面数据
-        LogData logData = LogDataManager.instance.logData;
-        this.rememberPasswordToggle.value = logData.isRemember;
-        this.autoLoginToggle.value = logData.isAutoLogin;
-        this.userNameInput.value = logData.userName;
-        if (this.rememberPasswordToggle.value == true)
-        {
-            this.passwordInput.value = logData.password;
-        }
+        LogData logData = DataManager.instance.logData;
+        this.SetPanelValue(logData.userName, logData.password, logData.isRemember, logData.isAutoLogin);
+
         if (this.autoLoginToggle.value == true)
         {
-            Debug.Log("自动登录中...");
+            // Debug.Log("自动登录中...");
+        }
+    }
+
+    // 检测登录信息是否合法
+    bool CheckLogin(string userName, string password)
+    {
+        RegisterData registerData = DataManager.instance.registerData;
+        if(registerData.registerDic.ContainsKey(userName))
+        {
+            // 用户名存在,检查密码
+            if(registerData.registerDic[userName] == password)
+            {
+                // 密码正确
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 设置面板值
+    public void SetPanelValue(string userName, string password,bool isRemember, bool isAutoLogin)
+    {
+        this.rememberPasswordToggle.value = isRemember;
+        this.autoLoginToggle.value = isAutoLogin;
+        this.userNameInput.value = userName;
+        if (isRemember)
+        {
+            this.passwordInput.value = password;
+        }
+        else
+        {
+            this.passwordInput.value = "";
         }
     }
 }
