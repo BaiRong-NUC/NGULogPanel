@@ -765,6 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 361502518}
   - component: {fileID: 361502519}
+  - component: {fileID: 361502520}
   m_Layer: 5
   m_Name: LogPanel
   m_TagString: Untagged
@@ -843,6 +844,24 @@ MonoBehaviour:
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
   useSortingOrder: 0
+--- !u!114 &361502520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361502517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950121a233734e94ebcbc07efcfbd7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userNameInput: {fileID: 1829197632}
+  passwordInput: {fileID: 22358308}
+  btnLogin: {fileID: 2069238418}
+  btnRegister: {fileID: 646472906}
+  rememberPasswordToggle: {fileID: 1434699300}
+  autoLoginToggle: {fileID: 1177681894}
 --- !u!1 &436247397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176917805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 267057512}
