@@ -309,8 +309,9 @@ GameObject:
   - component: {fileID: 267057511}
   - component: {fileID: 267057510}
   - component: {fileID: 267057509}
+  - component: {fileID: 267057513}
   m_Layer: 5
-  m_Name: UI Root
+  m_Name: LogPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,6 +421,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &267057513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267057508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c47421d1e172442abbdfb9458cf780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436247397
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440857861}
   - component: {fileID: 1440857862}
+  - component: {fileID: 1440857863}
   m_Layer: 5
   m_Name: TipPanel
   m_TagString: Untagged
@@ -911,6 +925,20 @@ MonoBehaviour:
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
   useSortingOrder: 0
+--- !u!114 &1440857863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440857860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e19e89b0627544abf35f74b8f6d802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BtnSure: {fileID: 1743304518}
+  LabContent: {fileID: 703986831}
 --- !u!1 &1679233927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1036,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1743304515}
   - component: {fileID: 1743304516}
+  - component: {fileID: 1743304518}
+  - component: {fileID: 1743304517}
   m_Layer: 5
   m_Name: BtnSure
   m_TagString: Untagged
@@ -1065,7 +1095,7 @@ MonoBehaviour:
   mHeight: 73
   mDepth: 4
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1.8219178
@@ -1086,6 +1116,45 @@ MonoBehaviour:
   mSpriteName: ui_DL_anniuxiao_01
   mFixedAspect: 0
   mFillCenter: 1
+--- !u!65 &1743304517
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743304514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 133, y: 73, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1743304518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743304514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 1743304514}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
 --- !u!1 &1746562679
 GameObject:
   m_ObjectHideFlags: 0
