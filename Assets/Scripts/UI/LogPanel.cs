@@ -34,6 +34,9 @@ public class LogPanel : UIBase<LogPanel>
             DataManager.instance.logData.isAutoLogin = this.autoLoginToggle.value;
             DataManager.instance.SaveLogData();
             this.Hide();
+
+            // 如果玩家之前选择过服务器,直接进入到服务器面板,否则进入服务器选择面板
+            SeverPanel.instance.Show();
         }));
 
         this.rememberPasswordToggle.onChange.Add(new EventDelegate(() =>

@@ -750,7 +750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &242284647
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,6 +1294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357794043}
   - component: {fileID: 357794044}
+  - component: {fileID: 357794045}
   m_Layer: 5
   m_Name: SeverPanel
   m_TagString: Untagged
@@ -1356,7 +1357,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3005
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
@@ -1368,6 +1369,21 @@ MonoBehaviour:
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
   useSortingOrder: 0
+--- !u!114 &357794045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357794042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5824de95fd25564d93ff216d394098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brnSure: {fileID: 1892595238}
+  btnChange: {fileID: 2060165617}
+  labSeverName: {fileID: 255022193}
 --- !u!1 &361502517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &361502518
 Transform:
   m_ObjectHideFlags: 0
@@ -3034,7 +3050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1440857861
 Transform:
   m_ObjectHideFlags: 0
@@ -3092,7 +3108,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3007
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mAlphaProp: 
