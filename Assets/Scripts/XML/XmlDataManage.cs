@@ -26,32 +26,76 @@ public class SerializationDictionary<TKey, TValue> : Dictionary<TKey, TValue>, I
 
         // TypeDescriptor.GetConverter 支持泛型类型的字符串转换
         var keyConverter = TypeDescriptor.GetConverter(typeof(TKey));
+        var valueConverter = TypeDescriptor.GetConverter(typeof(TValue));
 
-        while (reader.NodeType == XmlNodeType.Element)
+        // 检查值类型是否为简单类型
+        bool isSimpleType = typeof(TValue).IsPrimitive ||
+                            typeof(TValue) == typeof(string) ||
+                            typeof(TValue) == typeof(decimal) ||
+                            typeof(TValue) == typeof(DateTime);
+
+        XmlSerializer valueSerializer = isSimpleType ? null : new XmlSerializer(typeof(TValue));
+
+        while (reader.NodeType != XmlNodeType.EndElement)
         {
-            string keyStr = reader.GetAttribute("key");
-            TKey key = (TKey)keyConverter.ConvertFromString(keyStr);
+            if (reader.NodeType == XmlNodeType.Element && reader.Name == "Item")
+            {
+                string keyStr = reader.GetAttribute("key");
+                TKey key = (TKey)keyConverter.ConvertFromString(keyStr);
 
-            reader.ReadStartElement("Item");
-            XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
-            TValue value = (TValue)valueSerializer.Deserialize(reader);
-            reader.ReadEndElement();
+                TValue value;
+                if (isSimpleType)
+                {
+                    // 简单类型：从属性读取
+                    string valueStr = reader.GetAttribute("value");
+                    value = (TValue)valueConverter.ConvertFromString(valueStr);
+                    reader.Read(); // 移动到下一个节点
+                }
+                else
+                {
+                    // 复杂类型：使用子树读取器来反序列化
+                    reader.ReadStartElement("Item"); // 进入Item内部
+                    value = (TValue)valueSerializer.Deserialize(reader);
+                    reader.ReadEndElement(); // 读取</Item>
+                }
 
-            this.Add(key, value);
+                this.Add(key, value);
+            }
+            else
+            {
+                reader.Read();
+            }
         }
         // 读到父节点的结束,将结束节点读取,避免影响之后的数据读取
-        if (reader.NodeType == XmlNodeType.EndElement)
-            reader.Read();
+        reader.ReadEndElement();
     }
 
     public void WriteXml(XmlWriter writer)
     {
-        XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
+        // 检查值类型是否为简单类型
+        bool isSimpleType = typeof(TValue).IsPrimitive ||
+                            typeof(TValue) == typeof(string) ||
+                            typeof(TValue) == typeof(decimal) ||
+                            typeof(TValue) == typeof(DateTime);
+
+        XmlSerializer valueSerializer = isSimpleType ? null : new XmlSerializer(typeof(TValue));
+
         foreach (TKey key in this.Keys)
         {
             writer.WriteStartElement("Item");
             writer.WriteAttributeString("key", key.ToString());
-            valueSerializer.Serialize(writer, this[key]);
+
+            if (isSimpleType)
+            {
+                // 简单类型：写入属性
+                writer.WriteAttributeString("value", this[key].ToString());
+            }
+            else
+            {
+                // 复杂类型：序列化为子元素
+                valueSerializer.Serialize(writer, this[key]);
+            }
+
             writer.WriteEndElement();
         }
     }
