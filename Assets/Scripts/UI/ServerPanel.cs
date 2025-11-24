@@ -10,6 +10,8 @@ public class ServerPanel : UIBase<ServerPanel>
 
     public UILabel labSeverName;
 
+    public UIButton backButton;
+
     public override void Init()
     {
         this.btnChange.onClick.Add(new EventDelegate(() =>
@@ -24,6 +26,13 @@ public class ServerPanel : UIBase<ServerPanel>
             //确认服务器，后场景切换，保存用户选择的服务器ID等信息
             DataManager.instance.SaveLogData();
             SceneManager.LoadScene("GameScene");
+        }));
+
+        this.backButton.onClick.Add(new EventDelegate(() =>
+        {
+            //返回登录面板
+            LogPanel.instance.Show();
+            this.Hide();
         }));
         this.Hide();
     }
