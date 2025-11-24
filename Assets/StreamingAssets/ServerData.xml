@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ServerData>
+  <serverInfoDict>
+    <Item key="1">
+      <ServerInfo id="1" name="ServerA" status="1" isNew="true" />
+    </Item>
+    <Item key="2">
+      <ServerInfo id="2" name="ServerB" status="0" isNew="false" />
+    </Item>
+  </serverInfoDict>
+</ServerData>

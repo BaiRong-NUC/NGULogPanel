@@ -26,18 +26,18 @@ public class SerializationDictionary<TKey, TValue> : Dictionary<TKey, TValue>, I
 
         // TypeDescriptor.GetConverter 支持泛型类型的字符串转换
         var keyConverter = TypeDescriptor.GetConverter(typeof(TKey));
-        var valueConverter = TypeDescriptor.GetConverter(typeof(TValue));
 
         while (reader.NodeType == XmlNodeType.Element)
         {
             string keyStr = reader.GetAttribute("key");
-            string valueStr = reader.GetAttribute("value");
-
             TKey key = (TKey)keyConverter.ConvertFromString(keyStr);
-            TValue value = (TValue)valueConverter.ConvertFromString(valueStr);
+
+            reader.ReadStartElement("Item");
+            XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
+            TValue value = (TValue)valueSerializer.Deserialize(reader);
+            reader.ReadEndElement();
 
             this.Add(key, value);
-            reader.Read(); // 读到下一个节点
         }
         // 读到父节点的结束,将结束节点读取,避免影响之后的数据读取
         if (reader.NodeType == XmlNodeType.EndElement)
@@ -46,11 +46,12 @@ public class SerializationDictionary<TKey, TValue> : Dictionary<TKey, TValue>, I
 
     public void WriteXml(XmlWriter writer)
     {
+        XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
         foreach (TKey key in this.Keys)
         {
             writer.WriteStartElement("Item");
             writer.WriteAttributeString("key", key.ToString());
-            writer.WriteAttributeString("value", this[key].ToString());
+            valueSerializer.Serialize(writer, this[key]);
             writer.WriteEndElement();
         }
     }

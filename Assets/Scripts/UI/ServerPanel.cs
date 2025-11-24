@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SeverPanel : UIBase<SeverPanel>
+public class ServerPanel : UIBase<ServerPanel>
 {
     public UIButton brnSure;
     public UIButton btnChange;
@@ -24,6 +24,8 @@ public class SeverPanel : UIBase<SeverPanel>
             SceneManager.LoadScene("GameScene");
         }));
 
+        // 测试服务器数据读取
+        ServerData serverInfo = XmlDataManage.instance.LoadData(typeof(ServerData), "ServerData.xml") as ServerData;
         this.Hide();
     }
 

@@ -36,7 +36,7 @@ public class LogPanel : UIBase<LogPanel>
             this.Hide();
 
             // 如果玩家之前选择过服务器,直接进入到服务器面板,否则进入服务器选择面板
-            SeverPanel.instance.Show();
+            ServerPanel.instance.Show();
         }));
 
         this.rememberPasswordToggle.onChange.Add(new EventDelegate(() =>
