@@ -40,6 +40,9 @@ public class SelectServerPanel : UIBase<SelectServerPanel>
             group.SetLabelString(i * 5 + 1, Mathf.Min((i + 1) * 5, serverData.serverInfoDict.Count));
 
         }
+
+        // 默认显示第一个区服范围的服务器列表
+        this.UpdateRightScrollView(1, Mathf.Min(5, serverData.serverInfoDict.Count));
     }
 
     public void UpdateRightScrollView(int begin, int end)
