@@ -25,6 +25,16 @@ public class DataManager
         XmlDataManage.instance.SaveData(this.logData, "LogData.xml");
     }
 
+    public void ClearLogData()
+    {
+        this.logData.userName = "";
+        this.logData.password = "";
+        this.logData.isRemember = false;
+        this.logData.isAutoLogin = false;
+        this.logData.serverId = 0;
+        this.SaveLogData();
+    }
+
     public void SaveRegisterData()
     {
         XmlDataManage.instance.SaveData(this.registerData, "RegisterData.xml");

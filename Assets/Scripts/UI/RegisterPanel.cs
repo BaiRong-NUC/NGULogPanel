@@ -58,6 +58,8 @@ public class RegisterPanel : UIBase<RegisterPanel>
             return false;
         }
         registerData.registerDic.Add(userName, password);
+        // 注册成功,清空登录数据
+        DataManager.instance.ClearLogData();
         DataManager.instance.SaveRegisterData();
         return true;
     }
