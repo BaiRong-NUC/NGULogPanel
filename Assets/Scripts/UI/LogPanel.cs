@@ -12,6 +12,17 @@ public class LogPanel : UIBase<LogPanel>
     public UIToggle autoLoginToggle;
     public override void Init()
     {
+        // 初始化登录界面数据
+        LogData logData = DataManager.instance.logData;
+        this.SetPanelValue(logData.userName, logData.password, logData.isRemember, logData.isAutoLogin);
+
+        if (this.autoLoginToggle.value)
+        {
+            // 自动登录
+            // 自动登录时显示ServerPanel，SeverPanel的初始化一定要在LogPanel init之前完成(可以在Program Settings下修改Script Execution Order)
+            this.Log();
+        }
+
         // 注册事件
         this.btnRegister.onClick.Add(new EventDelegate(() =>
         {
@@ -33,10 +44,8 @@ public class LogPanel : UIBase<LogPanel>
             DataManager.instance.logData.isRemember = this.rememberPasswordToggle.value;
             DataManager.instance.logData.isAutoLogin = this.autoLoginToggle.value;
             DataManager.instance.SaveLogData();
-            this.Hide();
-
-            // 如果玩家之前选择过服务器,直接进入到服务器面板,否则进入服务器选择面板
-            ServerPanel.instance.Show();
+            //密码正确,登录
+            this.Log();
         }));
 
         this.rememberPasswordToggle.onChange.Add(new EventDelegate(() =>
@@ -54,15 +63,23 @@ public class LogPanel : UIBase<LogPanel>
                 this.rememberPasswordToggle.value = true;
             }
         }));
+    }
 
-        // 初始化登录界面数据
-        LogData logData = DataManager.instance.logData;
-        this.SetPanelValue(logData.userName, logData.password, logData.isRemember, logData.isAutoLogin);
-
-        if (this.autoLoginToggle.value == true)
+    private void Log()
+    {
+        // 隐藏当前面板
+        this.Hide();
+        // 如果玩家之前选择过服务器,直接进入到服务器面板,否则进入服务器选择面板
+        if (DataManager.instance.logData.serverId != 0)
         {
-            // Debug.Log("自动登录中...");
+            ServerPanel.instance.Show();
         }
+        else
+        {
+            // 打开选服面板
+            SelectServerPanel.instance.Show();
+        }
+        ServerPanel.instance.Show();
     }
 
     // 检测登录信息是否合法

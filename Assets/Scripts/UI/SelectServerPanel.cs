@@ -8,6 +8,8 @@ public class SelectServerPanel : UIBase<SelectServerPanel>
     public Transform rightScrollViewContent; // 右侧滚动视图内容区域
     public UILabel lastSelectedServerLabel; // 上一次选择的服务器名称
 
+    public UISprite lastSelectedServerState; // 上一次选择的服务器状态
+
     public UILabel curServerRangeLabel; // 当前选择的服务器区服范围
 
     public Vector3 leftScrollViewOriginalPos; // 左侧滚动视图初始位置
@@ -41,8 +43,7 @@ public class SelectServerPanel : UIBase<SelectServerPanel>
 
         }
 
-        // 默认显示第一个区服范围的服务器列表
-        this.UpdateRightScrollView(1, Mathf.Min(5, serverData.serverInfoDict.Count));
+        this.Hide();
     }
 
     public void UpdateRightScrollView(int begin, int end)
@@ -80,5 +81,44 @@ public class SelectServerPanel : UIBase<SelectServerPanel>
 
         // 更新当前选择的服务器范围标签
         this.curServerRangeLabel.text = string.Format("服务器 {0}—{1}区", begin, end);
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        // 显示时默认选择第一个区服范围
+        this.UpdateRightScrollView(1, Mathf.Min(5, DataManager.instance.serverData.serverInfoDict.Count));
+
+        // 显示上次选择的服务器
+        int serverId = DataManager.instance.logData.serverId;
+        if(serverId==0){
+            this.lastSelectedServerLabel.text = "无";
+            this.lastSelectedServerState.gameObject.SetActive(false);
+        }
+        else
+        {
+            ServerInfo serverInfo = DataManager.instance.serverData.serverInfoDict[serverId];
+            this.lastSelectedServerLabel.text = string.Format("{0}区    {1}", serverInfo.id, serverInfo.name);
+            // 服务器状态 0-无状态 1-流畅 2-繁忙 3-火爆 4-维护 
+            this.lastSelectedServerState.gameObject.SetActive(true);
+            switch (serverInfo.status)
+            {
+                case 0:
+                    this.lastSelectedServerState.gameObject.SetActive(false);
+                    break;
+                case 1:
+                    this.lastSelectedServerState.spriteName = "ui_DL_liuchang_01";
+                    break;
+                case 2:
+                    this.lastSelectedServerState.spriteName = "ui_DL_fanhua_01";
+                    break;
+                case 3:
+                    this.lastSelectedServerState.spriteName = "ui_DL_huobao_01";
+                    break;
+                case 4:
+                    this.lastSelectedServerState.spriteName = "ui_DL_weihu_01";
+                    break;
+            }
+        }
     }
 }
