@@ -8,11 +8,16 @@ public class DataManager
     // 注册数据
     public RegisterData registerData = new RegisterData();
 
+    // 服务器数据
+    public ServerData serverData;
+
     private DataManager()
     {
         this.logData = XmlDataManage.instance.LoadData(typeof(LogData), "LogData.xml") as LogData;
 
         this.registerData = XmlDataManage.instance.LoadData(typeof(RegisterData), "RegisterData.xml") as RegisterData;
+
+        this.serverData = XmlDataManage.instance.LoadData(typeof(ServerData), "ServerData.xml") as ServerData;
     }
 
     public void SaveLogData()

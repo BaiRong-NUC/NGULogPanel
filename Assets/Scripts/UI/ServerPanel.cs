@@ -23,9 +23,6 @@ public class ServerPanel : UIBase<ServerPanel>
             //确认服务器，后场景切换
             SceneManager.LoadScene("GameScene");
         }));
-
-        // 测试服务器数据读取
-        ServerData serverInfo = XmlDataManage.instance.LoadData(typeof(ServerData), "ServerData.xml") as ServerData;
         this.Hide();
     }
 

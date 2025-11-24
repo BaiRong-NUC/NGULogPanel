@@ -17,7 +17,8 @@ public class ServerGroup : MonoBehaviour
         this.button.onClick.Add(new EventDelegate(() =>
         {
             print("ServerGroup button clicked");
-            // 更新服务器展示的内容
+            // 更新服务器展示的内容,会先调用Setring方法设置的begin和end
+            SelectServerPanel.instance.UpdateRightScrollView(this.begin, this.end);
         }));
     }
 

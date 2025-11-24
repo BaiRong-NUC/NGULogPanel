@@ -3,10 +3,94 @@
 <ServerData>
   <serverInfoDict>
     <Item key="1">
-      <ServerInfo id="1" name="ServerA" status="1" isNew="true" />
+      <ServerInfo id="1" name="ServerA" status="0" isNew="true" />
     </Item>
     <Item key="2">
-      <ServerInfo id="2" name="ServerB" status="0" isNew="false" />
+      <ServerInfo id="2" name="ServerB" status="1" isNew="false" />
+    </Item>
+    <Item key="3">
+      <ServerInfo id="3" name="ServerC" status="2" isNew="true" />
+    </Item>
+    <Item key="4">
+      <ServerInfo id="4" name="ServerD" status="3" isNew="false" />
+    </Item>
+    <Item key="5">
+      <ServerInfo id="5" name="ServerE" status="4" isNew="true" />
+    </Item>
+    <Item key="6">
+      <ServerInfo id="6" name="ServerF" status="0" isNew="false" />
+    </Item>
+    <Item key="7">
+      <ServerInfo id="7" name="ServerG" status="1" isNew="true" />
+    </Item>
+    <Item key="8">
+      <ServerInfo id="8" name="ServerH" status="2" isNew="false" />
+    </Item>
+    <Item key="9">
+      <ServerInfo id="9" name="ServerI" status="3" isNew="true" />
+    </Item>
+    <Item key="10">
+      <ServerInfo id="10" name="ServerJ" status="4" isNew="false" />
+    </Item>
+    <Item key="11">
+      <ServerInfo id="11" name="ServerK" status="0" isNew="true" />
+    </Item>
+    <Item key="12">
+      <ServerInfo id="12" name="ServerL" status="1" isNew="false" />
+    </Item>
+    <Item key="13">
+      <ServerInfo id="13" name="ServerM" status="2" isNew="true" />
+    </Item>
+    <Item key="14">
+      <ServerInfo id="14" name="ServerN" status="3" isNew="false" />
+    </Item>
+    <Item key="15">
+      <ServerInfo id="15" name="ServerO" status="4" isNew="true" />
+    </Item>
+    <Item key="16">
+      <ServerInfo id="16" name="ServerP" status="0" isNew="false" />
+    </Item>
+    <Item key="17">
+      <ServerInfo id="17" name="ServerQ" status="1" isNew="true" />
+    </Item>
+    <Item key="18">
+      <ServerInfo id="18" name="ServerR" status="2" isNew="false" />
+    </Item>
+    <Item key="19">
+      <ServerInfo id="19" name="ServerS" status="3" isNew="true" />
+    </Item>
+    <Item key="20">
+      <ServerInfo id="20" name="ServerT" status="4" isNew="false" />
+    </Item>
+    <Item key="21">
+      <ServerInfo id="21" name="ServerU" status="0" isNew="true" />
+    </Item>
+    <Item key="22">
+      <ServerInfo id="22" name="ServerV" status="1" isNew="false" />
+    </Item>
+    <Item key="23">
+      <ServerInfo id="23" name="ServerW" status="2" isNew="true" />
+    </Item>
+    <Item key="24">
+      <ServerInfo id="24" name="ServerX" status="3" isNew="false" />
+    </Item>
+    <Item key="25">
+      <ServerInfo id="25" name="ServerY" status="4" isNew="true" />
+    </Item>
+    <Item key="26">
+      <ServerInfo id="26" name="ServerZ" status="0" isNew="false" />
+    </Item>
+    <Item key="27">
+      <ServerInfo id="27" name="ServerAA" status="1" isNew="true" />
+    </Item>
+    <Item key="28">
+      <ServerInfo id="28" name="ServerBB" status="2" isNew="false" />
+    </Item>
+    <Item key="29">
+      <ServerInfo id="29" name="ServerCC" status="3" isNew="true" />
+    </Item>
+    <Item key="30">
+      <ServerInfo id="30" name="ServerDD" status="4" isNew="false" />
     </Item>
   </serverInfoDict>
 </ServerData>
